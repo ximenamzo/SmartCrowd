@@ -1,0 +1,146 @@
+Instalar Django
+    pip install Django==4.1.7
+
+Libreria para postgres
+    pip install pyscopg2
+
+Libreria para mail
+    pip install django-smtp-ssl
+
+Iniciar proyecto Django -> en carpeta raiz del proyecto python
+    django-admin startproject NombreProyecto
+
+Ver el servidor en navegador
+    http://localhost:8000/nombreUrlView/
+
+
+## En carpeta del proyecto
+
+Ayuda
+    python3 manage.py help
+    python manage.py help
+
+Cambiar idioma
+    setting.py
+        line 111 LANGUAGE_CODE = 'es-mx'
+
+Admin
+    python manage.py createsuperuser
+    ximena
+    xmanzo@ucol.mx
+    DJxime357!*
+
+Migrar
+    python manage.py migrate
+
+Iniciar servidor
+    python manage.py runserver
+
+Iniciar app
+    python manage.py startapp nombreApp
+
+## AGREGAR EN VIEWS.PY
+    def nombreVista(request):
+        return render(request, "archivo.html")
+
+## Tablas en nombreApp/models.py
+    class NombreTabla(model.Models):
+        nombre = models.TipoDato(longitud)
+
+Checar y comprobar que no haya errores
+    python manage.py check nombreApp
+
+Si todo bien con la app
+Migrar todo
+    python manage.py makemigrations
+
+Si todo bien con la migracion sale algo asi
+Try the new cross-platform PowerShell https://aka.ms/psco
+  nombreApp\migrations\0001_initial.py      ### 0001 es numero de control de las modificaciones
+    - Create model NombreTabla
+
+Para crear las tablas en la base de datos
+    python manage.py sqlmigrate nombreApp 0001
+
+Decirle que ese codigo sql es para crear nuestras tablas
+    python manage.py migrate
+        ### python siempre agrega un campo id como llave primaria
+
+Para manipular BDD desde consola abrimos Shell
+    python manage.py shell
+
+Manipular tabla importando
+    from nombreApp.models import NombreTabla/Class/Modelo
+
+Primer registro
+    variableN = Modelo/Tabla(nombre='nombre', apellido='apellido', dinero=550)
+
+Guardar registro
+    variableN.save()
+
+Crear Y guardar registros
+    variableN = Modelo/Tabla.objects.create(nombre='Nombre',apellido='Apellido',dinero=550)
+
+Actualizar registro
+    variableN.atributo='nuevo'
+    variableN.save()
+
+Borrar registro
+    variableN = Modelo/Tabla.objects.get(id=N)
+    variableN.delete()
+
+Consultas Select (solo consulta, no resultado)
+    variableConsulta = Modelo.objects.all()
+    variableConsulta.query.__str__()
+
+Tipo WHERE / Select Where y devuelve id
+    Modelo.objects.filter(columna='nombreColumna')
+
+Convertir objetos a cadenas str
+    ## En el archivo models.py
+     ## En la clase del modelo que queramos
+         def __str__(self):
+            return 'col1 %s, col2 %s y col3 %s' % (self.col1, self.col2, self.col3)
+
+USAR > EN UNA CONSULTA
+    Modelo.objects.filter(nombreColumna__gte=NNN)
+USAR < EN UNA CONSULTA
+    Modelo.objects.filter(nombreColumna__lte=NNN)
+USAR range EN UNA CONSULTA
+    Modelo.objects.filter(nombreColumna__gte=NNN,nombreColumna__lte=NNN)
+      o
+    Modelo.objects.filter(nombreColumna__gte=NNN,nombreColumna__lte=NNN)
+ORDER BY
+    Modelo.objects.filter(nombreColumna=condicional).order_by('nombreColumnaN')
+ORDER BY DESC
+    Modelo.objects.filter(nombreColumna=condicional).order_by('-nombreColumnaN')
+                                                               ^
+                                                          signo menos -
+
+## archivo ADMIN.PY
+Agregar al panel de administracion tablas de registro
+    from nombreAppProyecto.models import Modelo, Modelo, Modelo...
+    admin.site.register(Modelo)
+    admin.site.register(Modelo, ModelosAdmin)...
+
+#### EN LA CLASE class ModelosAdmin(amin.ModelAdmin):
+* Ver atributos en tabla del modelo EN EL PANEL DE ADMINISTRACION
+    list_display=("atributo", "atributo", "atributo")
+* Agregar barra de busqueda
+    search_fields = ("atributo", "atributo")
+* Agregar filtrado principal importante dejar coma
+    list_filter = ("atributoSeccion", )
+* Filtrado de fecha en parte superior
+    date_hierarchy = "atributoDeFecha"
+
+
+##Modificaciones en tablas SQL
+    Campos nulos
+        atributo = models.TipoDato(blank=True, null=True)
+    Longitud
+        atributo = models.TipoDato(max_length=NN)
+    String a mostrar
+            def __str__(self):
+                return '%s, palabra %s  palabra %s' % (self.atributo, self.atributo, self.atributo)
+    Campo en registro
+        atributo = models.TipoDato(xxx=NN, verbose_name="Texto personalizado")
