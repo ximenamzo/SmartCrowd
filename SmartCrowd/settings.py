@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,12 +82,13 @@ WSGI_APPLICATION = 'SmartCrowd.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'smartcrowd',
-        'USER': 'postgres',
-        'PASSWORD': 'contra123',
-        'HOST': '127.0.0.1',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'smart-crowd',
+        'USER': 'django@smart-crowd',
+        'PASSWORD': 'MAdj2023!*',
+        'HOST': 'smart-crowd.postgres.database.azure.com',
         'DATABASE_PORT': '5432',
+        'OPTIONS': {'sslmode': 'require'},
     }
 }
 

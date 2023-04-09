@@ -1,0 +1,3 @@
+servername> smart-crowd
+administratorname> django
+password> MAdj2023!*
