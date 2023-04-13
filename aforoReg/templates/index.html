@@ -25,5 +25,12 @@
                 </div>
             </div>
         </div><!--primer fila-->
+        <div class="row">
+            <ul>
+                {% for lugar in lugares %}
+                <li>{{lugar.nomlugar}}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock %}

@@ -7,6 +7,6 @@ from .models import Place, Camera, Register
 
 # Create your views here.
 def index(request):
-    lugaresRegistrados = Place.objects.all()
-    return render(request, 'index.html', {'lugares': lugaresRegistrados})
+    lugares = Place.objects.all()
+    return render(request, 'index.html', {'lugares': lugares})
 
