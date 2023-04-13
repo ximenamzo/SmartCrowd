@@ -24,6 +24,13 @@
                     <img src="{% static 'img/raspberry.png' %}" class="img-rasp">
                 </div>
             </div>
+        </div><!--primer fila-->
+        <div class="row">
+            <ul>
+                {% for lug in lugares %}
+                <li>{{lug.nomlugar}}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}
