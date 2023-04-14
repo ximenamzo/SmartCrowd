@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-=t(74_hwezje(^xy2kmzb=lddqpqtz*e9x$ov-u-0x%t_7*p!7
 DEBUG = True
 #DEBUG = False
 
-ALLOWED_HOSTS = ['smartcrowd.azurewebsites.net','127.0.0.1', 'localhost']
-#ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['smartcrowd.azurewebsites.net','127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
