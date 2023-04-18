@@ -7,6 +7,6 @@ from .models import Place, Camera, Register
 
 # Create your views here.
 def index(request):
-    lugares = Place.objects.all()
+    lugares = Place.objects.order_by('fec_cre')
     return render(request, 'index.html', {'lugares': lugares})
 
