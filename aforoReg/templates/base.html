@@ -16,19 +16,20 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-custom">
       <div class="container-fluid">
-        <img src="{% static 'img/SmartCrowdLogo.png' %}" class="img-nav-bar">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <img src="{% static 'img/SmartCrowdLogoSm.png' %}" class="img-nav-bar" alt="Smart Crowd">
+        <button class="navbar-toggler" style="color:white;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color:white;"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <hr style="color: white;">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="{% url 'semaforo' %}">Sem&aacute;foro</a>
             </li>
-            <li class="nav-item dropdown">
+            <!--<li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown
               </a>
@@ -38,9 +39,9 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
-            </li>
+            </li>-->
             <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
+              <a class="nav-link" href="{% url 'sobre-nosotros' %}">Sobre nosotros</a>
             </li>
           </ul>
           <form class="d-flex mt-3" role="search">
@@ -128,57 +129,14 @@
         </section>
         <!-- Section: Text -->
 
-        <!-- Section: Links -->
-        <!--<section class="">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-              <ul class="list-unstyled mb-0">
-                <li><a href="#!" class="text-white">Link 1</a></li>
-                <li><a href="#!" class="text-white">Link 2</a></li>
-                <li><a href="#!" class="text-white">Link 3</a></li>
-                <li><a href="#!" class="text-white">Link 4</a></li>
-              </ul>
-            </div>-->
-            <!--Grid column-->
-            <!--<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-              <ul class="list-unstyled mb-0">
-                <li><a href="#!" class="text-white">Link 1</a></li>
-                <li><a href="#!" class="text-white">Link 2</a></li>
-                <li><a href="#!" class="text-white">Link 3</a></li>
-                <li><a href="#!" class="text-white">Link 4</a></li>
-              </ul>
-            </div>-->
-            <!--Grid column-->
-            <!--<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-              <ul class="list-unstyled mb-0">
-                <li><a href="#!" class="text-white">Link 1</a></li>
-                <li><a href="#!" class="text-white">Link 2</a></li>
-                <li><a href="#!" class="text-white">Link 3</a></li>
-                <li><a href="#!" class="text-white">Link 4</a></li>
-              </ul>
-            </div>-->
-            <!--Grid column-->
-            <!--<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-              <ul class="list-unstyled mb-0">
-                <li><a href="#!" class="text-white">Link 1</a></li>
-                <li><a href="#!" class="text-white">Link 2</a></li>
-                <li><a href="#!" class="text-white">Link 3</a></li>
-                <li><a href="#!" class="text-white">Link 4</a></li>
-              </ul>
-            </div>
-          </div>
-        </section>-->
       </div>
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2023 Copyright - Universidad de Colima
+        © 2023 Copyright - Manzo & Alejandre Co.
       </div>
       <!-- Copyright -->
     </footer>
     <!-- Footer -->
+  {% block scripts %}{% endblock %}
 </body>
 </html>

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extraHead %}
+<style>
+    #semaforo{
+        border: 8px solid black;
+        padding: 10px 3px;
+        width: 80px;
+        border-radius: 50px;
+    }
+    #semaforo > div{
+        width:50px;
+        height: 50px;
+        border-radius: 50%;
+        opacity: .3;
+    }
+    #linea1{
+        height:200px;
+        width:10px;
+        background:#000;
+        margin-left:30px;
+    }
+    #linea2{
+        height:10px;
+        width:70px;
+        background:#000;
+    }
+    #verde{
+        background-color: green;
+    }
+    #amarillo{
+        background-color: yellow;
+    }
+    #rojo{
+        background-color: red;
+    }
+</style>
+{% endblock %}
+
+{% block title %}Smart Crowd{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h1>{{ nombre_lugar }}</h1>
+        <!--<h3>{{ lugar_camara }}</h3>
+        <h5>{{ personas }}</h5>-->
+    </div>
+    <div id="semaforo">
+        <div id="verde"></div>
+        <div id="amarillo"></div>
+        <div id="rojo"></div>
+    </div>
+    <div id="linea1"></div>
+    <div id="linea2"></div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        function iniciarSemaforo (numPersonas) {
+            var verde = document.getElementById("verde");
+            var amarillo = document.getElementById("amarillo");
+            var rojo = document.getElementById("rojo");
+        
+            if (numPersonas <=5) {
+                verde.style.opacity=1;
+                amarillo.style.opacity=.3;
+                rojo.style.opacity=.3;
+            } else if (numPersonas > 5 && numPersonas < 10) {
+                verde.style.opacity=.3;
+                amarillo.style.opacity=1;
+                rojo.style.opacity=.3;
+            } else {
+                verde.style.opacity=.3;
+                amarillo.style.opacity=.3;
+                rojo.style.opacity=1;
+            }
+        }
+
+        function fetchDatos() {
+            fetch('/semaforo', {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    iniciarSemaforo(data.personas);
+                })
+                .catch(error => {
+                    console.error('Error al obtener el numero de personas: ', error);
+                });
+        }
+
+        var timer=setInterval(function(){
+            fetchDatos();
+        }, 12000);
+
+        fetchDatos();
+        
+        /*var timer=setInterval(function(){
+            fetch('/semaforo')
+                .then(response => response.json())
+                .then(data => {
+                    iniciarSemaforo(data.personas);
+                })
+                .catch(error => {
+                    console.error('Error al obtener el numero de personas: ', error);
+                })
+        }, 12000);
+        
+        fetch('/semaforo')
+            .then(response => response.json())
+            .then(data => {
+                iniciarSemaforo(data.personas);
+            })
+            .catch(error => {
+                console.error('Error al reobtener el numero de personas: ', error);
+            });*/
+    </script>
+{% endblock %}

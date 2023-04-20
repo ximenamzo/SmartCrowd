@@ -22,4 +22,5 @@ class Register(models.Model):
     id_place=models.IntegerField()
     id_cam=models.IntegerField()
     personas=models.IntegerField()
-    tmstmp=models.DateTimeField(auto_now=True)
+    fecha=models.DateField(default=timezone.now, verbose_name='Fecha', help_text='Fecha en formato Y-M-D')
+    hora = models.TimeField(default=timezone.now, verbose_name='Hora', help_text='Hora en formato HH:MM:SS')
