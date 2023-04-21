@@ -36,3 +36,7 @@ def semaforo(request):
 def sobre_nosotros(request):
     return render(request, 'views/sobre-nosotros.html')
 
+
+def prueba(request):
+    return render(request, 'views/prueba.html')
+

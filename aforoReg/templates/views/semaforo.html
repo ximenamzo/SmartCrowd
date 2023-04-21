@@ -5,25 +5,27 @@
 <style>
     #semaforo{
         border: 8px solid black;
-        padding: 10px 3px;
-        width: 80px;
+        padding: 10px 10px;
+        width: 110px;
         border-radius: 50px;
+        margin-left: 10%;
     }
     #semaforo > div{
-        width:50px;
-        height: 50px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         opacity: .3;
     }
     #linea1{
-        height:200px;
+        height:150px;
         width:10px;
         background:#000;
-        margin-left:30px;
+        /*margin-left:32px;*/
+        margin-left:15%;
     }
     #linea2{
         height:10px;
-        width:70px;
+        width:75px;
         background:#000;
     }
     #verde{
@@ -35,6 +37,12 @@
     #rojo{
         background-color: red;
     }
+    #ovalo{
+        width:110px;
+        heigth:40px;
+        background:#f4f4f4;
+        border-radius:50%;
+    }
 </style>
 {% endblock %}
 
@@ -42,17 +50,28 @@
 
 {% block content %}
     <div class="row">
-        <h1>{{ nombre_lugar }}</h1>
-        <!--<h3>{{ lugar_camara }}</h3>
-        <h5>{{ personas }}</h5>-->
+        <h1 class="mt-3 mx-5">{{ nombre_lugar }}</h1>
+        <!--<h3>{{ lugar_camara }}</h3>-->
+        <h6 class="mt-1 mx-5">Último registro de personas:</h6>
+        <h5 class="mx-5" id="personas">{{ personas }}</h5>
     </div>
-    <div id="semaforo">
-        <div id="verde"></div>
-        <div id="amarillo"></div>
-        <div id="rojo"></div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+             <div id="semaforo">
+                <div id="verde"></div>
+                <div id="amarillo"></div>
+                <div id="rojo"></div>
+            </div>
+            <div id="ovalo"></div>
+            <!--<div id="linea1"></div>
+            <div id="linea2" ></div>-->
+        </div>
+        <div class="col-md-4">
+        </div>
     </div>
-    <div id="linea1"></div>
-    <div id="linea2"></div>
+
 {% endblock %}
 
 
@@ -63,11 +82,11 @@
             var amarillo = document.getElementById("amarillo");
             var rojo = document.getElementById("rojo");
         
-            if (numPersonas <=5) {
+            if (numPersonas <=3) {
                 verde.style.opacity=1;
                 amarillo.style.opacity=.3;
                 rojo.style.opacity=.3;
-            } else if (numPersonas > 5 && numPersonas < 10) {
+            } else if (numPersonas > 3 && numPersonas < 7) {
                 verde.style.opacity=.3;
                 amarillo.style.opacity=1;
                 rojo.style.opacity=.3;
@@ -87,6 +106,7 @@
                 .then(response => response.json())
                 .then(data => {
                     iniciarSemaforo(data.personas);
+                    document.getElementById('personas').innerHTML = data.personas;
                 })
                 .catch(error => {
                     console.error('Error al obtener el numero de personas: ', error);
@@ -95,7 +115,7 @@
 
         var timer=setInterval(function(){
             fetchDatos();
-        }, 12000);
+        }, 5000);
 
         fetchDatos();
         
@@ -108,7 +128,7 @@
                 .catch(error => {
                     console.error('Error al obtener el numero de personas: ', error);
                 })
-        }, 12000);
+        }, 5000);
         
         fetch('/semaforo')
             .then(response => response.json())
