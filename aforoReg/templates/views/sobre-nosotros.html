@@ -6,7 +6,25 @@
 {% block title %}Smart Crowd{% endblock %}
 
 {% block content %}
+<!--EN EL APARTADO DE SOBRE NOSOTROS AGREGUE EL TEXTO CORRESPONDIENTE-->
     <div class="container">
-        <p>Holaaaaa</p>
+        <div class="row my-5">
+            <div class="col-sm-6">
+                <div class="row pt-5">
+                    <div id="textHome" class="text-justify">
+                    <p style="font-size: 1.2em;">
+                        Smart Crowd es un sistema embebido para el control de aforo de determinados espacios.
+                        ¡Basta de Esperar! Comienza a utilizar nuestros servicios para conocer el
+                        sem&aacute;foro actual del lugar a donde deseas ir.
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <img src="{% static 'img/raspberry.png' %}" class="img-rasp">
+                </div>
+            </div>
+        </div><!--primer fila-->
     </div>
 {% endblock %}
