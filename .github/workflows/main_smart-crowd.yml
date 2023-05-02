@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'smart-crowd'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2102DF7B4E9F4578948D878BCB9599D9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ADA81F05AB634F319AD7878F36539C1A }}
