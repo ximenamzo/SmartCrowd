@@ -85,13 +85,25 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'smart-crowd',
-        'USER': 'django@smart-crowd',
+        'USER': 'django@smart-crowd-db',
         'PASSWORD': 'MAdj2023!*',
-        'HOST': 'smart-crowd.postgres.database.azure.com',
+        'HOST': 'smart-crowd-db.postgres.database.azure.com',
         'DATABASE_PORT': '5432',
         'OPTIONS': {'sslmode': 'require'},
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'smart-crowd',
+#         'USER': 'django@smart-crowd',
+#         'PASSWORD': 'MAdj2023!*',
+#         'HOST': 'smart-crowd.postgres.database.azure.com',
+#         'DATABASE_PORT': '5432',
+#         'OPTIONS': {'sslmode': 'require'},
+#     }
+# }
 
 # DATABASES = {
 #     'default': {

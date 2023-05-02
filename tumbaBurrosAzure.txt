@@ -1,0 +1,68 @@
+## Por XIMENA MANZO CASTREJON
+
+0. Hacer cuenta de azure con Azure for Students
+
+1. Crear un 'Resource Group'
+    1.1 Basics
+        1.1.1 Project Details
+            1.1.1.1 Subscription -> Azure for Students
+            1.1.1.2 Resource group -> 'Nombre del grupo de recursos' *(smart-crowd)
+        1.1.2 Detalles del recurso
+            1.1.2.1 Region -> (US) East US
+    1.2 Tags
+        NONE
+    1.3 Review + create
+        1.3.1 Click en 'Create'
+
+2. Ir a Home y en la fila de 'Azure Services' dar click a 'App Services'
+    2.1 Click en 'Create' para crear Web App
+        2.1.1 Basics
+            2.1.1.1 Project Details
+                2.1.1.1.1 (Default) Subscription -> Azure for Students
+                2.1.1.1.2 (Default) Resource group -> 'Nombre del grupo de recursos creado previamente' *(smart-crowd)
+            2.1.1.2 Instance Details
+                2.1.1.2.1 Name -> Nombre *(smart-crowd)
+                2.1.1.2.2 (Default) Publish -> Code
+                2.1.1.2.3 Runtime stack -> Python 3.9
+                2.1.1.2.4 Operating System -> Linux
+                2.1.1.2.5 Region -> Central US
+            2.1.1.3 Pricing Plans
+                2.1.1.3.1 Linux Plan (East US) -> (Default) (New)ASP-smartcrowd-83a1
+                2.1.1.3.2 Pricing Plan -> Free F1 (Shared infrastructure)
+            2.1.1.4 Zone Redundancy
+                2.1.1.4.1 Todo en Default
+        2.1.2 Click en boton Next, Next, Next hasta llegar a Create
+
+3. Ir a Home y en la tabla de Resources, seleccionar 'smart-crowd' 'App Service'
+    3.1 Ir a Deployment Center, en la pestana de Settings
+        3.1.1 Source -> GitHub (click en Authorize)
+        3.1.2 Signed in as -> Cuenta de github
+        3.1.3 Organization -> Nombre de la cuenta u organizacion
+        3.1.4 Repository -> Escoger el repo que queramos jalar
+        3.1.5 Branch -> Se recomienda main
+        3.1.6 Workflow Option -> Overwrite
+    3.2 Click en Save y esperar para el deploy
+
+4. Ir a Home y escribir en el buscador Azure Database for PostgreSQL servers
+    4.1 Click en 'Create' para crear DB
+    4.2 Choose a deployment option... Azure Database... -> Single server
+        4.2.1 Basics
+            4.2.1.1 Project Details
+                4.2.1.1.1 (Default) Subscription -> Azure for Students
+                4.2.1.1.2 (Default) Resource group -> 'Nombre del grupo de recursos creado previamente' *(smart-crowd)
+            4.2.1.2 Server Details
+                4.2.1.2.1 Server Name -> Nombre *(smart-crowd-db)
+                4.2.1.2.2 (Default) Data Source -> None
+                4.2.1.2.3 Location -> (US) East US
+                4.2.1.2.4 Version -> 11
+                4.2.1.2.5 Compute + storage -> (Default)
+            4.2.1.3 Administrator account
+                4.2.1.3.1 Admin username -> Username *(django)
+                4.2.1.3.2 Password -> Contrasenia *(MAdj2023!*)
+        4.2.2 Click en boton Create
+
+5. Ir a Home e ingresar a la base de datos
+    5.1 Ir a 'Connection security'
+    5.2 Firewall rules
+        5.2.1 Clink en link azul '+ Add current IP address ...'
+        5.2.1 Click en 'Save'
