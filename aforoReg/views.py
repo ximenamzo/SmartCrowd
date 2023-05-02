@@ -13,8 +13,8 @@ def index(request):
 
 
 def semaforo(request):
-    lugar = Place.objects.get(id=9)
-    camara = Camera.objects.get(id=8)
+    lugar = Place.objects.get(id=3)
+    camara = Camera.objects.get(id=1)
     registro = Register.objects.latest('fecha', 'hora')
 
     data = {
