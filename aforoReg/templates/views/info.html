@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extraHead %}{% endblock %}
+
+{% block title %}Smart Crowd{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-sm-6">
+                <div class="row pt-5">
+                    <div id="textHome" class="text-justify">
+                    <p style="font-size: 1.2em;">
+                        Smart Crowd es un sistema embebido para el control de aforo de determinados espacios.
+                        Toda nuestra tecnología es desarrollada en la placa de Raspberry PI4
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <img src="{% static 'img/rasp.png' %}" class="img-rasp">
+                </div>
+            </div>
+        </div><!--primer fila-->
+        <div class="row mb-5">
+            <ul>
+                {% for lugar in lugares %}
+                <li>{{lugar.nomlugar}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

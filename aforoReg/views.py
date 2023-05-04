@@ -8,8 +8,20 @@ from django.http import JsonResponse, HttpRequest
 
 # Create your views here.
 def index(request):
-    lugares = Place.objects.order_by('fec_cre')
-    return render(request, 'index.html', {'lugares': lugares})
+    lugar = Place.objects.get(id=3)
+    camara = Camera.objects.get(id=1)
+    registro = Register.objects.latest('fecha', 'hora')
+
+    data = {
+        'nombre_lugar': lugar.nomlugar,
+        'lugar_camara': camara.lugarcam,
+        'personas': registro.personas,
+    }
+
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse(data)
+    else:
+        return render(request, 'index.html', data)
 
 
 def semaforo(request):
@@ -33,8 +45,8 @@ def semaforo(request):
         return render(request, 'views/semaforo.html', data)
 
 
-def sobre_nosotros(request):
-    return render(request, 'views/sobre-nosotros.html')
+def info(request):
+    return render(request, 'views/info.html')
 
 
 def prueba(request):

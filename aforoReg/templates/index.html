@@ -2,7 +2,48 @@
 {% load static %}
 
 {% block extraHead %}
-
+<style>
+    #semaforo{
+        border: 8px solid black;
+        padding: 10px 10px;
+        width: 110px;
+        border-radius: 50px;
+        margin-left: 10%;
+    }
+    #semaforo > div{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        opacity: .3;
+    }
+    #linea1{
+        height:150px;
+        width:10px;
+        background:#000;
+        /*margin-left:32px;*/
+        margin-left:15%;
+    }
+    #linea2{
+        height:10px;
+        width:75px;
+        background:#000;
+    }
+    #verde{
+        background-color: green;
+    }
+    #amarillo{
+        background-color: yellow;
+    }
+    #rojo{
+        background-color: red;
+    }
+    #ovalo{
+        width:110px;
+        heigth:40px;
+        background:#f4f4f4;
+        border-radius:50%;
+    }
+</style>
 {% endblock %}
 
 {% block title %}Smart Crowd{% endblock %}
@@ -11,19 +52,40 @@
     <div class="container">
         <div class="row my-5">
             <div class="col-sm-6">
-                <div class="row pt-5">
-                    <div id="textHome" class="text-justify">
-                    <p style="font-size: 1.2em;">
-                        Smart Crowd es un sistema embebido para el control de aforo de determinados espacios.
-                        ¡Basta de Esperar! Comienza a utilizar nuestros servicios para conocer el
-                        sem&aacute;foro actual del lugar a donde deseas ir.
-                    </p>
+                <div class="row">
+                    <h1 class="mt-1 mx-5">{{ nombre_lugar }}</h1>
+                    <h6 class="mt-1 mx-5">Último registro de personas:</h6>
+                    <h5 class="mx-5" id="personas">{{ personas }}</h5>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-7">
+                        <div id="semaforo">
+                            <div id="verde"></div>
+                            <div id="amarillo"></div>
+                            <div id="rojo"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-sm-6">
+                <div class="row mt-3">
+                    <div class="text-izq">
+                    <p style="font-size: 1.2em;">
+                        Desarrollado con la tecnolog&iacute;a de Raspberry PI4
+                    </p>
+                    </div>
+                </div>
                 <div class="row">
-                    <img src="{% static 'img/raspberry.png' %}" class="img-rasp">
+                    <img src="{% static 'img/raspberry.png' %}" class="img-rasp img-ani">
+                </div>
+                <div class="row">
+                    <div class="text-izq">
+                    <p style="font-size: 1em;">
+                        Ve al apartado de <a style="color:#ce1d56;" href="{% url 'info' %}">información</a> para saber m&aacute;s!!
+                    </p>
+                    </div>
                 </div>
             </div>
         </div><!--primer fila-->
@@ -35,4 +97,50 @@
             </ul>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function iniciarSemaforo (numPersonas) {
+            var verde = document.getElementById("verde");
+            var amarillo = document.getElementById("amarillo");
+            var rojo = document.getElementById("rojo");
+        
+            if (numPersonas <=6) {
+                verde.style.opacity=1;
+                amarillo.style.opacity=.3;
+                rojo.style.opacity=.3;
+            } else if (numPersonas > 6 && numPersonas < 12) {
+                verde.style.opacity=.3;
+                amarillo.style.opacity=1;
+                rojo.style.opacity=.3;
+            } else {
+                verde.style.opacity=.3;
+                amarillo.style.opacity=.3;
+                rojo.style.opacity=1;
+            }
+        }
+
+        function fetchDatos() {
+            fetch('/semaforo', {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    iniciarSemaforo(data.personas);
+                    document.getElementById('personas').innerHTML = data.personas;
+                })
+                .catch(error => {
+                    console.error('Error al obtener el numero de personas: ', error);
+                });
+        }
+
+        var timer=setInterval(function(){
+            fetchDatos();
+        }, 5000);
+
+        fetchDatos();
+    </script>
 {% endblock %}

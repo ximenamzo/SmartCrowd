@@ -25,6 +25,10 @@
     text-align: justify;
 }
 
+.text-izq{
+    text-align: left;
+}
+
 .img-rasp{
     width: 80%;
     padding: 1em 3em 3em 4em;
@@ -88,4 +92,203 @@
         margin: .2em 1em 0 0;
         width: 20%;
     }
+}
+
+.btn-custom {
+    font-size: 1rem;
+    background: #8c52ff;
+    color: #fff;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: 0.5s;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.btn-custom:hover {
+    background: #6935d2 !important;
+    color: #fff;
+    transition: 0.5s;
+    border: 1px solid #4b229c;
+}
+.btn-custom:focus {
+    box-shadow: 0 0 0 5px #00000044;
+}
+
+.btn-custom i{
+    font-size: 1.2rem;
+}
+
+.btn-custom-outline {
+    margin: 2rem 0;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: #ffffff00;
+    color: #ffffff;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #8c52ff;
+    transition: 0.4s;
+    position: relative;
+    text-decoration: none;
+}
+.btn-custom-outline:hover {
+    background: #8c52ff !important;
+    color: #fff;
+    transition: 0.4s;
+    border: 1px solid #6935d2;
+}
+.btn-custom-outline:focus {
+    box-shadow: 0 0 0 5px #00000044;
+}
+
+.btn-custom-outline i{
+    font-size: 1.2rem;
+}
+
+
+.btn-custom-disabled {
+    margin: 2rem 0;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: #b28efb;
+    color: #fff;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: 0.5s;
+    position: relative;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.btn-custom-disabled:hover {
+    margin: 2rem 0;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: #b28efb;
+    color: #fff;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: 0.5s;
+    position: relative;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+
+.img-ani:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 2s;
+  
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(1deg); }
+    10% { transform: translate(-2px, -3px) rotate(-2deg); }
+    20% { transform: translate(-4px, 2px) rotate(2deg); }
+    30% { transform: translate(4px, 3px) rotate(1deg); }
+    40% { transform: translate(2px, -2px) rotate(2deg); }
+    50% { transform: translate(-2px, 3px) rotate(-2deg); }
+    60% { transform: translate(-4px, 2px) rotate(1deg); }
+    70% { transform: translate(4px, 2px) rotate(-2deg); }
+    80% { transform: translate(-2px, -2px) rotate(2deg); }
+    90% { transform: translate(1px, 2px) rotate(1deg); }
+    100% { transform: translate(0px, -1px) rotate(-1deg); }
+  }
+
+  .btn-custom2 {
+    font-size: 1rem;
+    background: #52d41f; /*#8c52ff*/
+    color: #fff;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: 0.5s;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.btn-custom2:hover {
+    background: #6935d2 !important;
+    color: #fff;
+    transition: 0.5s;
+    border: 1px solid #4b229c;
+}
+.btn-custom2:focus {
+    box-shadow: 0 0 0 5px #00000044;
+}
+
+.btn-custom i{
+    font-size: 1.2rem;
+}
+
+.btn-custom2-outline {
+    margin: 2rem 0;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: #ffffff00;
+    color: #ffffff;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #71ae58;
+    transition: 0.4s;
+    position: relative;
+    text-decoration: none;
+}
+.btn-custom2-outline:hover {
+    background: #71ae58 !important;
+    color: #fff;
+    transition: 0.4s;
+    border: 1px solid #177a10;
+}
+.btn-custom2-outline:focus {
+    box-shadow: 0 0 0 5px #00000044;
+}
+
+.btn-custom2-outline i{
+    font-size: 1.2rem;
+}
+
+
+.btn-custom2-disabled {
+    margin: 2rem 0;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: #b28efb;
+    color: #fff;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: 0.5s;
+    position: relative;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.btn-custom2-disabled:hover {
+    margin: 2rem 0;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: #b28efb;
+    color: #fff;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: 0.5s;
+    position: relative;
+    text-decoration: none;
+    transition: 0.5s;
 }
