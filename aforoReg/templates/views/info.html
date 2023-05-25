@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extraHead %}{% endblock %}
+{% block extraHead %}
+<style>
+.card {
+  border-radius: 50%;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+</style>
+{% endblock %}
 
 {% block title %}Smart Crowd{% endblock %}
 
@@ -14,7 +25,10 @@
                     <div id="textHome" class="text-justify">
                     <p style="font-size: 1.2em;">
                         Smart Crowd es un sistema embebido para el control de aforo de determinados espacios.
-                        Toda nuestra tecnología es desarrollada en la placa de Raspberry PI4
+                        Nuestro proyecto desarrolla con disintas tecnologías, tales como la placa de desarrollo
+                        RaspberryPI4, lenguaje Python, algoritmo de YOLO, Google Colab para el entrenamiento
+                        de un modelo propio, Framework de Django y Microsoft Azure para el alojamiento de la
+                        página y para el almacenamiento y transferencia de datos en una base de datos de PostgreSQL.
                     </p>
                     </div>
                 </div>
@@ -31,10 +45,10 @@
             <h1 class="mb-3">Equipo de desarrollo</h1>
           <div class="col-sm-6 mb-3 mb-sm-0">
               <div class="d-flex justify-content-center">
-                <div class="card text-center w-50">
-                  <img src="{% static 'img/cafe.jpg' %}" class="card-img-top" alt="..." style="width: auto">
+                <div class="card text-center w-50 shadow rounded">
+                  <img src="{% static 'img/miguel.jpg' %}" class="card-img-top" alt="..." style="width: auto">
                   <div class="card-body">
-                    <h5 class="card-title">Miguel A. Alejandre Arreola</h5>
+                    <h5 class="card-title">Miguel Alejandre Arreola</h5>
                     <p class="card-text">Encargado del algoritmo de reconocimiento, modelo y sistema embebido.</p>
                     <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                   </div>
@@ -43,11 +57,11 @@
           </div>
           <div class="col-sm-6">
               <div class="d-flex justify-content-center">
-                <div class="card text-center w-50">
-                  <img src="{% static 'img/cafe.jpg' %}" class="card-img-top" alt="..." style="width: auto">
+                <div class="card text-center w-50 shadow rounded">
+                  <img src="{% static 'img/xime.jpg' %}" class="card-img-top" alt="..." style="width: auto">
                   <div class="card-body">
                     <h5 class="card-title">Ximena Manzo Castrejón</h5>
-                    <p class="card-text">A cargo del desarrollo web y transferencia de datos.</p>
+                    <p class="card-text">A cargo del desarrollo web, alojamiento en la nube y base de datos.</p>
                     <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                   </div>
                 </div>
