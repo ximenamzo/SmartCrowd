@@ -8,8 +8,8 @@ from django.http import JsonResponse, HttpRequest
 
 # Create your views here.
 def index(request):
-    lugar = Place.objects.get(id=3)
-    camara = Camera.objects.get(id=1)
+    lugar = Place.objects.get(id=5)
+    camara = Camera.objects.get(id=4)
     registro = Register.objects.latest('fecha', 'hora')
 
     data = {
