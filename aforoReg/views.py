@@ -5,10 +5,11 @@ from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Place, Camera, Register
 from django.http import JsonResponse, HttpRequest
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def index(request):
-    lugar = Place.objects.get(id=5)
+    lugar = Place.objects.get(id=2)
     camara = Camera.objects.get(id=4)
     registro = Register.objects.latest('fecha', 'hora')
 
@@ -22,6 +23,22 @@ def index(request):
         return JsonResponse(data)
     else:
         return render(request, 'index.html', data)
+
+# def index(request):
+#     lugar = get_object_or_404(Place, id=2)
+#     camara = get_object_or_404(Camera, id=4)
+#     registro = Register.objects.latest('fecha', 'hora')
+#
+#     data = {
+#         'nombre_lugar': lugar.nomlugar,
+#         'lugar_camara': camara.lugarcam,
+#         'personas': registro.personas,
+#     }
+#
+#     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+#         return JsonResponse(data)
+#     else:
+#         return render(request, 'index.html', data)
 
 
 def semaforo(request):
