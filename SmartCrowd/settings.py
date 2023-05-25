@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'SmartCrowd.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'smart-crowd',
-        'USER': 'django@smart-crowd-db',
+        'NAME': 'smartcrowd',
+        'USER': 'django@smartcrowd',
         'PASSWORD': 'MAdj2023!*',
-        'HOST': 'smart-crowd-db.postgres.database.azure.com',
+        'HOST': 'smartcrowd.postgres.database.azure.com',
         'DATABASE_PORT': '5432',
         'OPTIONS': {'sslmode': 'require'},
     }
